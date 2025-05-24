@@ -47,11 +47,11 @@ hex = 0xFF       # hexadecimal literals are fine, too
 
 ### Built‑in operators
 
-| Category   | Operators                        |                     |
-| ---------- | -------------------------------- | ------------------- |
-| Arithmetic | `+`, `-`, `*`, `/`, `%`          |                     |
-| Bitwise    | `&`, \`                          | `, `^`, `<<`, `>>\` |
-| Comparison | `<`, `<=`, `>`, `>=`, `==`, `!=` |                     |
+| Category   | Operators                        |
+| ---------- | -------------------------------- |
+| Arithmetic | `+`, `-`, `*`, `/`, `%`          |
+| Bitwise    | `&`, `\|`, `^`, `<<`, `>>`       |
+| Comparison | `<`, `<=`, `>`, `>=`, `==`, `!=` |
 
 All operators work on 64‑bit signed integers.  String concatenation is supported with `+`.
 
@@ -101,7 +101,7 @@ Because everything is interpreted, changes are picked up immediately at runtime 
 
 Need a scripting layer so users can automate your app?  **Lin** is small enough to drop directly into any .NET solution:
 
-1. Copy **Interpreter.cs** into your project.
+1. Copy **LinInterpreter.cs** into your project.
 2. Expose your own API by injecting custom built‑ins (one line each).
 3. Launch the REPL or evaluate scripts programmatically.
 
