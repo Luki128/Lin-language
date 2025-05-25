@@ -10,7 +10,7 @@
 | ------------------- | ---------------------------- |
 | **Current version** | 0.1.0 (first public drop)    |
 | **Code size**       | \~500 LOC including comments |
-| **Dependencies**    | .NET 6 runtime *only*        |
+| **Dependencies**    | (.NET 5/.NET 6/.NET 7) runtime *only*        |
 | **License**         | MIT                          |
 
 *Lin is intentionally minimal – it can (and should!) be improved, but its current form is fully functional and **fast to implement**.*
@@ -32,7 +32,7 @@ Hello, Lin!
 (ok)
 ```
 
-> **Tip :** Any C#‑10/11 compatible runtime (e.g. .NET 6, .NET 7) will work – no external NuGet packages are required.
+> **Tip :** Any C#‑10/11 compatible runtime (e.g. .NET 5,.NET 6, .NET 7) will work – no external NuGet packages are required.
 
 ---
 
