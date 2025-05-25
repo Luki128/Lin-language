@@ -68,7 +68,7 @@ namespace SimpleInterpreter
         #endregion
 
         // =====================================================================
-        #region Tokenizer
+        #region Lexer
         // =====================================================================
 
         private enum TokenType
