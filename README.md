@@ -116,6 +116,9 @@ Your users gain the ability to write *macros, small tools and batch jobs* withou
 * `while` loops and `break` / `continue`
 * Simple module / import system
 * 64‑bit floating‑point numbers
+* Support if's with multiple condtions (now && || not supported)
+* Implement arrays
+* Standard liblary
 
 Pull requests & suggestions are welcome!
 
