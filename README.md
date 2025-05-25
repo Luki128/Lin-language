@@ -119,6 +119,8 @@ Your users gain the ability to write *macros, small tools and batch jobs* withou
 * Support if's with multiple condtions (now && || not supported)
 * Implement arrays
 * Standard liblary
+* Single linie comments
+* Multi line comments
 
 Pull requests & suggestions are welcome!
 
