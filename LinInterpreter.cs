@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Text;
 
-namespace SimpleInterpreter
+namespace Lin
 {
     /// <summary>
     /// A very small expression‐language interpreter featuring variables, arithmetic/bitwise operators,
@@ -34,6 +34,8 @@ namespace SimpleInterpreter
                 ["print"] = args => { Console.WriteLine(args[0]?.ToString()); return ""; },
             };
 
+        
+
         // =====================================================================
         #region Public API
         // =====================================================================
@@ -47,23 +49,44 @@ namespace SimpleInterpreter
         public object Execute(string line)
         {
             if (string.IsNullOrWhiteSpace(line)) return null;
+            var inputCopy = inputBuffer.ToString();
 
-            // Collect text until all braces are balanced: { … }
-            inputBuffer.AppendLine(line);
-            if (!BracesBalanced(inputBuffer.ToString()))
-                return null;                       // wait for more lines
+            try
+            {
 
-            tokens = Tokenize(inputBuffer.ToString());
-            inputBuffer.Clear();
-            tokenLocation = 0;
+                // Collect text until all braces are balanced: { … }
+                inputBuffer.AppendLine(line);
+                if (!BracesBalanced(inputBuffer.ToString()))
+                    return null;                       // wait for more lines
 
-            object result = ParseStatement();      // starting point of the parser
-            Expect(TokenType.EOF);
-            return result;
+                tokens = Tokenize(inputBuffer.ToString());
+                inputBuffer.Clear();
+                tokenLocation = 0;
+
+                object result = ParseStatement();      // starting point of the parser
+                Expect(TokenType.EOF);
+                return result;
+            } catch(Exception ex) // handle fail to clear buffer
+            {
+                inputBuffer.Clear();
+                inputBuffer.Append(inputCopy);
+                throw ex;
+            }
+            return null;
         }
 
         /// <summary>Read‑only accessor for a variable.  Returns <c>null</c> when not defined.</summary>
         public object this[string varName] => variableStorage.TryGetValue(varName, out var v) ? v : null;
+
+
+        /// <summary>
+        /// Set or add, build-in function to language
+        /// </summary>
+        /// <param name="name">name of build in function</param>
+        /// <param name="function">function itself</param>
+        public void SetFunction(string name, Func<List<object>, object> function)
+          => buildinFunctions[name] = function;
+
 
         #endregion
 
