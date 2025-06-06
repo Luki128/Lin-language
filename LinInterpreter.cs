@@ -416,7 +416,7 @@ namespace Lin
             // String concatenation is only allowed with '+'.
             if (a is string || b is string)
             {
-                string xs = (string)a, ys = (string)b;
+                string xs = $"{a}", ys = $"{b}";
                 return  op switch
                 {
                     "+" => xs + ys,
@@ -425,6 +425,7 @@ namespace Lin
                     _ => throw new Exception($"Unsupported operator '{op} for strings'.")
                 };
             }
+
 
             long x = ToLong(a), y = ToLong(b);
 
