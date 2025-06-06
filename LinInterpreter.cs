@@ -416,8 +416,14 @@ namespace Lin
             // String concatenation is only allowed with '+'.
             if (a is string || b is string)
             {
-                if (op != "+") throw new Exception("Only '+' is allowed for strings.");
-                return $"{a}{b}";
+                string xs = (string)a, ys = (string)b;
+                return  op switch
+                {
+                    "+" => xs + ys,
+                    "==" => (long)(xs == ys ? 1 : 0),
+                    "!=" => (long)(xs != ys ? 1 : 0),
+                    _ => throw new Exception($"Unsupported operator '{op} for strings'.")
+                };
             }
 
             long x = ToLong(a), y = ToLong(b);
