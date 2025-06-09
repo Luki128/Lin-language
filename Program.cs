@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Lin;
 
-namespace SimpleInterpreter
+namespace LinLanguage
 {
 
     // =====================================================================
@@ -13,6 +14,7 @@ namespace SimpleInterpreter
         public static void Main()
         {
             var interp = new LinInterpreter();
+            interp.SetFunction("test", args => args[0]);
             while (true)
             {
                 Console.Write("> ");
